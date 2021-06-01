@@ -1,0 +1,16 @@
+body {
+    margin: 0px;
+    font-family: 'Titillium Web', sans-serif;
+ 
+ }
+ .app {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: grayscale($color: #5c5c5c)
+ }
+
+@import "./navigation.scss";
+@import "./dashboard.scss"
+
+
+
