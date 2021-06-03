@@ -1,0 +1,63 @@
+.add-debtor {
+  .add-deptor-header {
+    font-weight: 800;
+    font-size: 17px;
+    color: red;
+  }
+}
+
+.add-debtor__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  column-gap: 10px;
+
+  .debtor-form__left-wrapper {
+    display: grid;
+    grid-column: 1fr;
+    .labels {
+      margin-top: 10px;
+      color: #8d8d8d;
+      background: #ffffff;
+      transition: 300ms;
+    }
+    .inputField {
+      margin-left: 5px;
+      outline: none;
+      padding: 2px 4px;
+      border: 1px solid #dadce0;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+    .inputField:focus{
+        border: 2px solid royalblue;
+        }
+  }
+  .debtor-form__right-wrapper {
+    display: grid;
+    grid-column: 1fr;
+    align-items: flex-start;
+    .labels {
+      margin-top: 10px;
+      color: #8d8d8d;
+      background: #ffffff;
+      transition: 300ms;
+    }
+    .inputField {
+      margin-left: 5px;
+      outline: none;
+      padding: 2px 4px;
+      border: 1px solid #dadce0;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+    .inputField:focus{
+        border: 2px solid royalblue;
+        }
+
+        .submit-btn{
+            margin-left: 40%;
+            margin-top: 35px;
+        }
+  }
+}

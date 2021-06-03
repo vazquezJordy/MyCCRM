@@ -1,95 +1,112 @@
 import React, { Component } from "react";
 
 export default class AddDebtorForm extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            firstName: "",
-            lastName: "",
-            address1: "",
-            address2: "",
-            phoneNumber: "",
-            ssn: "",
-            spouse: "",
-            spousePhoneNumber: "",
-            spouseEmployer: "",
-            employer: "",
-            employerNumber: "",
-            amountOwed: "",
-            interest: "",
-            eligibleForCreditReporting: Boolean,
-        }
-    }
+    this.state = {
+      firstName: "",
+      lastName: "",
+      address1: "",
+      address2: "",
+      phoneNumber: "",
+      ssn: "",
+      spouse: "",
+      spousePhoneNumber: "",
+      spouseEmployer: "",
+      employer: "",
+      employerNumber: "",
+      amountOwed: "",
+      interest: "",
+      eligibleForCreditReporting: Boolean,
+    };
+  }
 
   render() {
     return (
       <div className="add-deptor">
-        <div className="add-deptor__header">Add debtor</div>
-        <div className="add-debtor__form">
-          <form className="debtor-form-wrapper">
-            <label>
+        <div className="add-deptor-header">Add debtor</div>
+        <form className="add-debtor__form">
+          <div className="debtor-form__left-wrapper">
+            <label className="labels">
               FirstName:
-              <input type="text" name="firstName" />
+              <input className="inputField" type="text" name="firstName" />
             </label>
-            <label>
+            <label className="labels">
               LastName:
-              <input type="text" name="lastName" />
+              <input className="inputField" type="text" name="lastName" />
             </label>
-            <label>
+            <label className="labels">
               Address 1:
-              <input type="text" name="address1" />
+              <input className="inputField" type="text" name="address1" />
             </label>
-            <label>
+            <label className="labels">
               Address 2:
-              <input type="text" name="address2" />
+              <input className="inputField" type="text" name="address2" />
             </label>
-            <label>
+            <label className="labels">
               Phone Number:
-              <input type="text" name="phoneNumber" />
+              <input className="inputField" type="text" name="phoneNumber" />
             </label>
-            <label>
+            <label className="labels">
               SSN:
-              <input type="text" name="SSN" placeholder="xxx-xx-0000" />
+              <input
+                className="inputField"
+                type="text"
+                name="SSN"
+                placeholder="xxx-xx-0000"
+              />
             </label>
-            <label>
+          </div>
+          <div className="debtor-form__right-wrapper">
+            <label className="labels">
               Spouse:
-              <input type="text" name="spouse" />
+              <input className="inputField" type="text" name="spouse" />
             </label>
-            <label>
+            <label className="labels">
               Spouse Phone Number:
-              <input type="text" name="spousePhoneNumber" />
+              <input
+                className="inputField"
+                type="text"
+                name="spousePhoneNumber"
+              />
             </label>
-            <label>
+            <label className="labels">
               Spouse Emplyer:
-              <input type="text" name="spouseEmployer" />
+              <input className="inputField" type="text" name="spouseEmployer" />
             </label>
-            <label>
+            <label className="labels">
               Employer:
-              <input type="text" name="employer" />
+              <input className="inputField" type="text" name="employer" />
             </label>
-            <label>
+            <label className="labels">
               Employer Number:
-              <input type="text" name="employerNumber" />
+              <input className="inputField" type="text" name="employerNumber" />
             </label>
-            <label>
+            <label className="labels">
               Amount owed:
-              <input type="number" name="amountOwed" />
+              <input className="inputField" type="number" name="amountOwed" />
             </label>
-            <label>
+            <label className="labels">
               Interest:
-              <input type="number" name="employerNumber" />
+              <input
+                className="inputField"
+                type="number"
+                name="employerNumber"
+              />
             </label>
-            <label for="reported">Eligible for credit reporting:</label>
+            <label className="labels" for="reported">
+              Eligible for credit reporting:
+            </label>
             <select id="reported" name="cars">
               <option value="yes">Yes</option>
               <option value="no">No</option>
             </select>
-          </form>
-          <div className='close-btn'>
-              <button>Close</button>
+            <div className="submit-btn">
+              <button>Submit</button>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     );
   }

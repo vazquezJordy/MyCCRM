@@ -4,24 +4,30 @@ import ReactModal from "react-modal";
 import AddDebtorModal from "../debtor/add-deptor-modal";
 
 export default class NavigationContainer extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       showModal: false
     }
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleModalClose = this.handleModalClose.bind(this);
   }
 
-  handleOpenModal() {
-    this.setState({showModal: true});
+   handleOpenModal=()=> {
+    this.setState({showModal: true})
   }
 
-  handleCloseModal() {
-    this.setState({showModal: false})
+  handleModalClose() {
+    this.setState({showModal: false});
   }
+
+  shoot() {
+    alert("Great Shot!");
+  }
+
+  
 
   render() {
     return (
@@ -47,9 +53,10 @@ export default class NavigationContainer extends Component {
         </div>
 
         <div className="nav-add-user">
-          <button onClick={this.handleOpenModal}>Add Deptor</button>
+          <button onClick={(() => this.handleOpenModal())}>Add Deptor</button>
           <AddDebtorModal 
-          handleOpenModal={this.handleOpenModal}
+            modalIsOpen={this.state.showModal}
+            handleModalClose={this.handleModalClose}
           />
         </div>
 
