@@ -10,12 +10,13 @@ export default class AddDebtorForm extends Component {
       address1: "",
       address2: "",
       phoneNumber: "",
+      employer: "",
+      employerNumber: "",
       ssn: "",
       spouse: "",
       spousePhoneNumber: "",
       spouseEmployer: "",
-      employer: "",
-      employerNumber: "",
+      spouseEmployerPhoneNumber: "",
       amountOwed: "",
       interest: "",
       eligibleForCreditReporting: Boolean,
@@ -49,6 +50,14 @@ export default class AddDebtorForm extends Component {
               <input className="inputField" type="text" name="phoneNumber" />
             </label>
             <label className="labels">
+              Employer:
+              <input className="inputField" type="text" name="employer" />
+            </label>
+            <label className="labels">
+              Employer Phone Number:
+              <input className="inputField" type="text" name="employerPhoneNumber" />
+            </label>
+            <label className="labels">
               SSN:
               <input
                 className="inputField"
@@ -75,13 +84,10 @@ export default class AddDebtorForm extends Component {
               Spouse Emplyer:
               <input className="inputField" type="text" name="spouseEmployer" />
             </label>
+            
             <label className="labels">
-              Employer:
-              <input className="inputField" type="text" name="employer" />
-            </label>
-            <label className="labels">
-              Employer Number:
-              <input className="inputField" type="text" name="employerNumber" />
+              Spouse Employer Number:
+              <input className="inputField" type="text" name="spouseEmployerNumber" />
             </label>
             <label className="labels">
               Amount owed:
