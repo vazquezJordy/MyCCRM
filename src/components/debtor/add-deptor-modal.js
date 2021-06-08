@@ -36,7 +36,7 @@ export default class AddDebtorModal extends Component {
           style={this.customStyles}
           isOpen={this.props.modalIsOpen}
         >
-          <AddDebtorForm />
+          <AddDebtorForm submitHandleModalClose={this.handleModalClose} />
           <div className="close-btn">
             <button onClick={this.props.handleModalClose}>Close</button>
           </div>
