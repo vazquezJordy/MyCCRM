@@ -1,7 +1,8 @@
 .nav-wrapper {
   display: flex;
   justify-content: space-between;
-  padding: 40px;
+  padding: 20px;
+  border-bottom: double 3px $white;
 
   .left-side {
     display: flex;
@@ -18,17 +19,19 @@
     font-size: 1.9rem;
 
     a {
-        background-color: #4CAF50; /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
+      background-color: $grey; /* Green */
+      border: 1px solid $purple;
+      border-radius: 10px;
+      color: $white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
       &:hover {
-        color: gray;
+        color: $purple;
         cursor: pointer;
+        border-left: solid 5px $pink;
       }
     }
   }
@@ -36,21 +39,46 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 30px;
+    margin-right: 5px;
+    margin-top: 25px;
     .user-button {
-        background-color: #4CAF50; /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
+      background-color: $grey; /* Green */
+      border: none;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border: 1px solid $purple;
+      border-radius: 10px;
 
-        &:hover {
-            color: gray;
-            cursor: pointer;
-        }
+      &:hover {
+        color: $purple;
+        cursor: pointer;
+        border-left: solid 5px $pink;
+      }
     }
+  }
+}
+
+.nav-add-user button {
+  margin-right: 400px;
+  align-self: center;
+  background-color: $grey; /* Green */
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid $purple;
+  border-radius: 10px;
+
+  &:hover {
+    color: $purple;
+    cursor: pointer;
+    border-left: solid 5px $pink;
   }
 }

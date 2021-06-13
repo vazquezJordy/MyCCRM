@@ -1,0 +1,47 @@
+.debtor-wrapper {
+    height: 100%;
+    background-color: $black;
+    margin-top: 5px;
+}
+
+.debtor-segment {
+    &__headers{
+        display: flex;
+        justify-content: space-between;
+
+        &__header {
+            box-sizing: border-box;
+            width: 14%;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            padding: 1em;
+            margin-bottom: 2em;
+            background-color: $grey;
+            color: #fff; 
+            border: 2px solid $purple;
+            border-radius: 10px;
+        }
+    }
+    &__columns{
+        display: flex;
+        justify-content: space-between;
+        margin-top: -25px;
+        &__column {
+            box-sizing: border-box;
+            width: 14%;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            padding: 1em;
+            margin-bottom: 2em;
+            background-color: $grey;
+            color: #fff; 
+            border: 2px solid $purple;
+            border-radius: 10px;
+            height: calc(100vh);
+        }
+    }
+}
+
+

@@ -1,17 +1,18 @@
 body {
     margin: 0px;
     font-family: 'Titillium Web', sans-serif;
- 
+    background-color: #1A1A1A;
  }
  .app {
     display: grid;
     grid-template-columns: 1fr;
-    background-color: grayscale($color: #5c5c5c)
+    background-color: #1A1A1A;
  }
 
+@import "./variables.scss";
 @import "./navigation.scss";
 @import "./dashboard.scss";
-@import "./addDebtor/addDebtor.scss"
-
+@import "./addDebtor/addDebtor.scss";
+@import "./addDebtor/debtor.scss"
 
 

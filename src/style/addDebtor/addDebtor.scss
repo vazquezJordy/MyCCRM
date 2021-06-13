@@ -1,63 +1,75 @@
 .add-debtor {
-  .add-deptor-header {
+  &__header {
     font-weight: 800;
     font-size: 17px;
-    color: red;
+    color: $white;
   }
-}
 
-.add-debtor__form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  column-gap: 10px;
-
-  .debtor-form__left-wrapper {
+  &__form {
     display: grid;
-    grid-column: 1fr;
-    .labels {
-      margin-top: 10px;
-      color: #8d8d8d;
-      background: #ffffff;
-      transition: 300ms;
-    }
-    .inputField {
-      margin-left: 5px;
-      outline: none;
-      padding: 2px 4px;
-      border: 1px solid #dadce0;
-      font-size: 18px;
-      border-radius: 5px;
-    }
-    .inputField:focus{
-        border: 2px solid royalblue;
-        }
-  }
-  .debtor-form__right-wrapper {
-    display: grid;
-    grid-column: 1fr;
-    align-items: flex-start;
-    .labels {
-      margin-top: 10px;
-      color: #8d8d8d;
-      background: #ffffff;
-      transition: 300ms;
-    }
-    .inputField {
-      margin-left: 5px;
-      outline: none;
-      padding: 2px 4px;
-      border: 1px solid #dadce0;
-      font-size: 18px;
-      border-radius: 5px;
-    }
-    .inputField:focus{
-        border: 2px solid royalblue;
-        }
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 10px;
 
-        .submit-btn{
-            margin-left: 40%;
-            margin-top: 35px;
-        }
+    &-left-wrapper {
+      display: grid;
+      grid-column: 1fr;
+      align-items: flex-start;
+      .labels {
+        margin-top: 10px;
+        color: $white;
+        background: $grey;
+        transition: 300ms;
+        border: solid 3px $purple;
+        border-radius: 10px;
+        border-style: inset;
+      }
+      .inputField {
+        margin-left: 5px;
+        outline: none;
+        padding: inherit;
+        border: 2px solid #dadce0;
+        font-size: 18px;
+        border-radius: 5px;
+        background-color: $grey;
+        color: $white;
+      }
+      .inputField:focus {
+        border: 2px solid royalblue;
+      }
+    }
+    &-right-wrapper {
+      display: grid;
+      grid-column: 1fr;
+      align-items: flex-start;
+      .labels {
+        margin-top: 10px;
+        color: $white;
+        background: $grey;
+        transition: 300ms;
+        border: solid 3px $purple;
+        border-radius: 10px;
+        border-style: inset;
+      }
+      .inputField {
+        margin-left: 5px;
+        outline: none;
+        padding: inherit;
+        border: 2px solid #dadce0;
+        font-size: 18px;
+        border-radius: 5px;
+        background-color: $grey;
+        color: $white;
+        
+      }
+      .inputField:focus {
+        border: 2px solid royalblue;
+      }
+
+      .submit-btn {
+        margin-left: 40%;
+        margin-top: 35px;
+      }
+    }
   }
 }

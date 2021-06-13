@@ -17,7 +17,8 @@ export default class AddDebtorModal extends Component {
         marginRight: "-50%",
         transform: "translate(-50%, -50%",
         width: "800px",
-        height: "500px"
+        height: "500px",
+        backgroundColor: "#1A1A1A",
       },
       overlay: {
         backgroundColor: "rgba(1, 1, 1, 0.75)",
@@ -25,19 +26,20 @@ export default class AddDebtorModal extends Component {
     };
   }
 
-  handleModalClose(){
-    this.props.handleModalClose();
-  }
-
   render() {
     return (
       <div>
         <ReactModal
           style={this.customStyles}
+          
+          onRequestClose={() => {
+            this.props.handleModalClose();
+          }}
+
           isOpen={this.props.modalIsOpen}
         >
-          <AddDebtorForm submitHandleModalClose={this.handleModalClose} />
-          <div className="close-btn">
+          <AddDebtorForm />
+          <div className="modal-btns">
             <button onClick={this.props.handleModalClose}>Close</button>
           </div>
         </ReactModal>

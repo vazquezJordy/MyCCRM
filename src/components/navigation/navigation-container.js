@@ -52,6 +52,7 @@ export default class NavigationContainer extends Component {
           </div>
         </div>
 
+        <div className="right-side">
         <div className="nav-add-user">
           <button onClick={(() => this.handleOpenModal())}>Add Deptor</button>
           <AddDebtorModal 
@@ -59,8 +60,6 @@ export default class NavigationContainer extends Component {
             handleModalClose={this.handleModalClose}
           />
         </div>
-
-        <div className="right-side">
           <button className="user-button">Jordy Vazquez</button>
         </div>
       </div>

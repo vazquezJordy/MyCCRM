@@ -24,6 +24,7 @@ export default class AddDebtorForm extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    
   }
 
   handleSubmit(event) {
@@ -56,7 +57,6 @@ export default class AddDebtorForm extends Component {
         console.log(error);
       });
     event.preventDefault();
-    console.log("test")
   }
 
   handleChange(event) {
@@ -71,10 +71,10 @@ export default class AddDebtorForm extends Component {
 
   render() {
     return (
-      <div className="add-deptor">
-        <div className="add-deptor-header">Add debtor</div>
-        <form className="add-debtor__form" onSubmit={this.handleSubmit}>
-          <div className="debtor-form__left-wrapper">
+      <div className="add-debtor">
+        <div className="add-debtor__header">Add debtor</div>
+        <form onSubmit={this.handleSubmit} className="add-debtor__form" >
+          <div className="add-debtor__form-left-wrapper">
             <label className="labels">
               FirstName:
               <input
@@ -157,7 +157,7 @@ export default class AddDebtorForm extends Component {
               />
             </label>
           </div>
-          <div className="debtor-form__right-wrapper">
+          <div className="add-debtor__form-right-wrapper">
             <label className="labels">
               Spouse:
               <input
@@ -232,9 +232,7 @@ export default class AddDebtorForm extends Component {
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select> */}
-            <div className="submit-btn">
-              <button>Submit</button>
-            </div>
+              <button className='btn'>Submit</button>
           </div>
         </form>
       </div>
