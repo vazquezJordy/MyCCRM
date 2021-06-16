@@ -5,10 +5,6 @@
 }
 
 .debtor-segment {
-    &__headers{
-        display: flex;
-        justify-content: space-between;
-
         &__header {
             box-sizing: border-box;
             width: 14%;
@@ -16,17 +12,13 @@
             justify-content: center;
             align-items: baseline;
             padding: 1em;
-            margin-bottom: 2em;
+            margin-bottom: 5px;
             background-color: $grey;
             color: #fff; 
             border: 2px solid $purple;
             border-radius: 10px;
         }
-    }
-    &__columns{
-        display: flex;
-        justify-content: space-between;
-        margin-top: -25px;
+    
         &__column {
             box-sizing: border-box;
             width: 14%;
@@ -41,7 +33,14 @@
             border-radius: 10px;
             height: calc(100vh);
         }
-    }
 }
 
+// .debtor-card {
+//     display: grid;
+//     grid-template-rows: 1fr;
+//     grid-template-columns: 1fr;
+//     padding: 5px 5px;
+//     border: 1px solid white;
+//     align-items: flex-end;
+// }
 

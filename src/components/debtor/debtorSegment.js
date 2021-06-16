@@ -3,8 +3,8 @@ import axios from "axios";
 import DebtorCard from "./debtor-card";
 
 export default class DebtorSegment extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       debtor: [],
@@ -19,67 +19,44 @@ export default class DebtorSegment extends Component {
       url: "http://localhost:5000/debtors",
     })
       .then((response) => {
-        console.log(response.data);
         this.setState({
-            debtor: this.state.debtor.concat(response.data)
-        })
-        console.log(this.state.debtor)
+          debtor: response.data,
+        });
       })
-      
+
       .catch((error) => {
         console.log(error);
       });
   }
 
   componentWillMount() {
-      this.getDebtors();
+    this.getDebtors();
   }
 
+  // debtorData() {
+  //   return this.state.debtor.map((debtor) => {
+  //     return <DebtorCard key={debtor.id} debtor={debtor} />;
+  //   });
+  // }
+
   render() {
+    // const debtorRecords = this.state.debtor.map((debtorRecord) => {
+    //   return (
+        
+    //     <div className="debtor-segment_card" key={debtorRecord.id}>
+    //       <DebtorCard debtorRecord={debtorRecord}/>
+    //       </div>
+    //   );
+    // });
+
+    const {debtor} = this.state;
+    console.log(debtor)
     return (
       <div className="debtor-segment">
-        <div className="debtor-segment__headers">
-          <div className="debtor-segment__headers__header">No contact</div>
-          <div className="debtor-segment__headers__header">
-            First Contact Attemt
-          </div>
-          <div className="debtor-segment__headers__header">
-            First Contact Attemt
-          </div>
-          <div className="debtor-segment__headers__header">
-            First Contact Attemt
-          </div>
-          <div className="debtor-segment__headers__header">
-            Call back scheduled
-          </div>
-          <div className="debtor-segment__headers__header">Sent to legal</div>
-          <div className="debtor-segment__headers__header">
-            Cease and disist
-          </div>
-        </div>
-        <div className="debtor-segment__columns">
-          <div className="debtor-segment__columns__column">
-            <DebtorCard firstName={this.state.debtor.firstName}/>
-          </div>
-          <div className="debtor-segment__columns__column">
-            <DebtorCard/>
-          </div>
-          <div className="debtor-segment__columns__column">
-            <DebtorCard/>
-          </div>
-          <div className="debtor-segment__columns__column">
-            <DebtorCard/>
-          </div>
-          <div className="debtor-segment__columns__column">
-            <DebtorCard/>
-          </div>
-          <div className="debtor-segment__columns__column">
-            <DebtorCard/>
-          </div>
-          <div className="debtor-segment__columns__column">
-            <DebtorCard/>
-          </div>
-        </div>
+          <div className="debtor-segment__header">No Contact</div>
+          
+            <div className="debtor-segment__column"><DebtorCard debtorData={debtor}/></div>
+        
       </div>
     );
   }
