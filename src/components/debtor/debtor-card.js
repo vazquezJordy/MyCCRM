@@ -1,24 +1,15 @@
 import React, { Component } from "react";
 
-export default class DebtorCard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: this.props.debtorData,
-    };
-  }
-  
+class DebtorCard extends Component {
   render() {
-    
-    const {firstName, LastName} = this.state.data;
-    const {debtorData} = this.state;
-    console.log(debtorData)
+        const {firstName, lastName} = this.props.debtorRecord;
     return ( 
-    <div>{debtorData} {firstName}</div>
+    <div>{firstName}{lastName}</div>
     )
   }
 }
+
+export default DebtorCard
  // const debtorRecords = this.state.debtor.map((debtorRecord) => {
     //   return (
         

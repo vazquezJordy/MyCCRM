@@ -40,22 +40,20 @@ export default class DebtorSegment extends Component {
   // }
 
   render() {
-    // const debtorRecords = this.state.debtor.map((debtorRecord) => {
-    //   return (
+    const debtorRecords = this.state.debtor.map((debtorRecord) => {
+      return (
         
-    //     <div className="debtor-segment_card" key={debtorRecord.id}>
-    //       <DebtorCard debtorRecord={debtorRecord}/>
-    //       </div>
-    //   );
-    // });
+        <div className="debtor-segment_card" key={debtorRecord.id}>
+          <DebtorCard debtorRecord={debtorRecord}/>
+          </div>
+      );
+    });
 
-    const {debtor} = this.state;
-    console.log(debtor)
     return (
       <div className="debtor-segment">
           <div className="debtor-segment__header">No Contact</div>
           
-            <div className="debtor-segment__column"><DebtorCard debtorData={debtor}/></div>
+            <div className="debtor-segment__column">{debtorRecords}</div>
         
       </div>
     );
