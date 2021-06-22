@@ -3,8 +3,8 @@ import axios from "axios";
 import DebtorCard from "./debtor-card";
 
 export default class DebtorSegment extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       debtor: [],
@@ -20,7 +20,7 @@ export default class DebtorSegment extends Component {
     })
       .then((response) => {
         this.setState({
-          debtor: response.data,
+          debtor: this.state.debtor.concat(response.data)
         });
       })
 
@@ -40,13 +40,8 @@ export default class DebtorSegment extends Component {
   // }
 
   render() {
-    const debtorRecords = this.state.debtor.map((debtorRecord) => {
-      return (
-        
-        <div className="debtor-segment_card" key={debtorRecord.id}>
-          <DebtorCard debtorRecord={debtorRecord}/>
-          </div>
-      );
+    const debtorRecords = this.state.debtor.map(debtorRecord => {
+      return <DebtorCard key={debtorRecord.id} debtorRecord={debtorRecord}/>
     });
 
     return (

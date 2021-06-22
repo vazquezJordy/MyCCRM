@@ -5,6 +5,7 @@ import NavigationContainer from "./navigation/navigation-container";
 import Dashboard from "./Dashboard/dashboard"
 import Deptor from "./debtor/debtor";
 import Payments from "./payments/payments";
+import DebtorDetail from "./debtor/detor-detail";
 
 export default class App extends Component {
   render() {
@@ -18,6 +19,15 @@ export default class App extends Component {
             <Route exact path = "/" component={Dashboard} />
             <Route exact path = "/debtor" component={Deptor} />
             <Route exact path = "/payment" component={Payments} />
+            <Route
+                path="/:slug"
+                render={(props) => (
+                  <DebtorDetail
+                    {...props}
+                  />
+                )}
+              />
+            
 
           </Switch>
             
