@@ -8,6 +8,7 @@ export default class DebtorSegment extends Component {
 
     this.state = {
       debtor: [],
+      debtorId: '',
     };
     this.getDebtors = this.getDebtors.bind(this);
   }
@@ -20,10 +21,12 @@ export default class DebtorSegment extends Component {
     })
       .then((response) => {
         this.setState({
-          debtor: this.state.debtor.concat(response.data)
+          debtor: this.state.debtor.concat(response.data),
+          debtorId: this.state.debtor.concat(response.data.id)
+          
         });
       })
-
+      
       .catch((error) => {
         console.log(error);
       });
@@ -33,14 +36,10 @@ export default class DebtorSegment extends Component {
     this.getDebtors();
   }
 
-  // debtorData() {
-  //   return this.state.debtor.map((debtor) => {
-  //     return <DebtorCard key={debtor.id} debtor={debtor} />;
-  //   });
-  // }
 
   render() {
     const debtorRecords = this.state.debtor.map(debtorRecord => {
+      console.log(debtorRecord.id)
       return <DebtorCard key={debtorRecord.id} debtorRecord={debtorRecord}/>
     });
 
