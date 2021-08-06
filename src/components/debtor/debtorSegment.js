@@ -22,8 +22,6 @@ export default class DebtorSegment extends Component {
       .then((response) => {
         this.setState({
           debtor: this.state.debtor.concat(response.data),
-          debtorId: this.state.debtor.concat(response.data.id)
-          
         });
       })
       

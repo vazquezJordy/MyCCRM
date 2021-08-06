@@ -15,19 +15,13 @@ export default class NavigationContainer extends Component {
     this.handleModalClose = this.handleModalClose.bind(this);
   }
 
-   handleOpenModal=()=> {
+   handleOpenModal = ()=> {
     this.setState({showModal: true})
   }
 
-  handleModalClose() {
+  handleModalClose=()=> {
     this.setState({showModal: false});
-  }
-
-  shoot() {
-    alert("Great Shot!");
-  }
-
-  
+  } 
 
   render() {
     return (

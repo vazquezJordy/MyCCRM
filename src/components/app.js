@@ -20,7 +20,7 @@ export default class App extends Component {
             <Route exact path = "/debtor" component={Deptor} />
             <Route exact path = "/payment" component={Payments} />
             <Route
-                path="/:slug"
+                path="/debtor/:slug"
                 render={(props) => (
                   <DebtorDetail
                     {...props}

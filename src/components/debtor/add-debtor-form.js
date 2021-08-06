@@ -31,7 +31,7 @@ export default class AddDebtorForm extends Component {
     axios({
       mode: "no-cors",
       method: "post",
-      url: "http://localhost:5000/createDebtor",
+      url: "http://localhost:5000/addDebtor",
       data: {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
