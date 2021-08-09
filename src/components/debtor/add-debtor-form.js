@@ -65,9 +65,6 @@ export default class AddDebtorForm extends Component {
     });
     console.log(event.target.value);
   }
-  handleModalClose() {
-    this.props.submitHandleModalClose();
-  }
 
   render() {
     return (

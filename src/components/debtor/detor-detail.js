@@ -200,6 +200,7 @@ export default class DebtorDetail extends Component {
               <div className="debtor-detail__payments-header">Payments</div>
               <button onClick={() => this.handleOpenModal()}> Add Payment</button>
               <AddPaymentModal
+                debtorID = {this.state.currentId}
                 modalIsOpen={this.state.showModal}
                 handleModalClose={this.handleModalClose}
               />

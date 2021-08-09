@@ -1,47 +1,78 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import axios from "axios";
 
 export default class PaymentDetailsModal extends Component {
-    constructor(){
-        super()
+  constructor(props) {
+    super(props);
 
-        this.state = {
+    this.state = {
+      timeStamp: "",
+      paymentAmount: "",
+      dateDue: "",
+      currentID : this.props.currentID
+    };
 
-            timeStamp:'',
-            paymentAmount: '',
-            dateDue:'',
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-        }
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+    console.log(event.target.value);
+    console.log(this.state.currentID)
+  }
 
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-    }
+  handleSubmit(event) {
+    axios({
+      mode: "no-cors",
+      method: "post",
+      url: `http://localhost:5000/debtor/${currentID}/payment`,
+      data: {
+        paymentAmount:this.state.paymentAmount, 
+        dateDue: this.state.dateDue,
+      }
+    })
+    .then((response) => {
+        console.log(response)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+    event.preventDefault();
+    
+  }
 
-    handleChange(event) {
-        this.setState({
-            [event.target.name] : event.target.value
-        });
-        console.log(event.target.value)
-    }
+  render() {
+    return (
+      <div className="payment-detail" >
+          <form onSubmit={this.handleSubmit}>
+        <label className="payment-detail__payment">
+          <div className="payment-detail__payment-header">Payment Amount</div>
+          <input
+            className="inputField"
+            type="number"
+            name="paymentAmount"
+            value={this.state.paymentAmount}
+            onChange={this.handleChange}
+          />
+        </label>
 
-    handleSubmit() {
+        <label className="payment-detail__payment">
+          <div className="payment-detail__payment-header">Payment Date</div>
+          <input
+            className="inputField"
+            type="number"
+            name="dateDue"
+            value={this.state.dateDue}
+            onChange={this.handleChange}
+          />
+        </label>
 
-    }
-
-    render() {
-        return (
-            <div className="payment-detail">
-                <label className="payment-detail__payment">
-                    <div>Payment amount</div>
-
-                    <input 
-                    className='inputField'
-                    type='number'
-                    name='paymentAmount'
-                    value= {this.state.paymentAmount}
-                    onChange= {this.handleChange}
-                    />
-                </label>
-            </div>
-        );
-    }
+        <button className='btn'>Submit</button>
+        </form>
+      </div>
+    );
+  }
 }

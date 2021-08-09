@@ -34,10 +34,11 @@ export default class AddPaymentModal extends Component {
             this.props.handleModalClose();
           }}
           isOpen={this.props.modalIsOpen}
+          currentID={this.props.debtorID}
         >
-          <PaymentDetailsModal />
+          <PaymentDetailsModal currentID= {this.props.debtorID} />
           <div className="modal-btns">
-            <button onClick={this.props.handleModalClose}>Close</button>
+            <button onClick={this.props.handleModalClose} >Close</button>
           </div>
         </ReactModal>
       </div>
