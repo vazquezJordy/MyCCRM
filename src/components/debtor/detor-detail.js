@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import AddPaymentModal from "../payments/add-payment-modal";
+import DebtorActivity from "./debtor-activity";
+import NoteModal from "./Note/note-modal";
 
 export default class DebtorDetail extends Component {
   constructor(props) {
@@ -12,6 +14,8 @@ export default class DebtorDetail extends Component {
       currentDebtor: {},
       firstName: "",
       showModal: false,
+      showNoteModal: false, 
+      showPhoneNoteModal: false,
     };
     this.getCurrentDebtor = this.getCurrentDebtor.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -208,7 +212,22 @@ export default class DebtorDetail extends Component {
             <div className="debtor-detail__payments-info-wrapper"></div>
           </div>
         </div>
-        <div className="activity-wrapper">Activity</div>
+        <div className="activity-wrapper">
+          <div className="activity-wrapper__header">Activity</div>
+          <div className="activity-wrapper__add-activity">
+            <div className="activity-wrapper__add-activity-note">
+              <button onClick={() => this.setState({showNoteModal: true})}>Add Activity</button>
+              <NoteModal 
+              debtorID = {this.state.currentId}
+              noteModalIsOpen={this.state.showNoteModal}
+              handleModalClose={() => this.setState({showModal: false})}
+              />
+            </div>
+            
+            
+          </div>
+            <DebtorActivity/>
+        </div>
       </div>
     );
   }

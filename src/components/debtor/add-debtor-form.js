@@ -24,7 +24,6 @@ export default class AddDebtorForm extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    
   }
 
   handleSubmit(event) {
@@ -70,7 +69,7 @@ export default class AddDebtorForm extends Component {
     return (
       <div className="add-debtor">
         <div className="add-debtor__header">Add debtor</div>
-        <form onSubmit={this.handleSubmit} className="add-debtor__form" >
+        <form onSubmit={this.handleSubmit} className="add-debtor__form">
           <div className="add-debtor__form-left-wrapper">
             <label className="labels">
               FirstName:
@@ -229,7 +228,7 @@ export default class AddDebtorForm extends Component {
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select> */}
-              <button className='btn'>Submit</button>
+            <button className="btn">Submit</button>
           </div>
         </form>
       </div>
