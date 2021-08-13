@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
-import axios from 'axios';
+import axios from "axios";
 
 export default class NoteModal extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-        note: '',
-        currentID: this.props.debtorID,
-    }
+      note: "",
+      currentID: this.props.debtorID,
+    };
 
     this.customStyles = {
       content: {
@@ -28,33 +28,39 @@ export default class NoteModal extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
+    this.handleModalClose = this.handleModalClose.bind(this);
   }
 
-  handleChange(event){
+  handleChange(event) {
     this.setState({
-        [event.target.name]:event.target.value 
-    })
-    console.log(event.target.value )
-    console.log(this.state.currentID, 'This is the id');
+      [event.target.name]: event.target.value,
+    });
+    console.log(event.target.value);
+    console.log(this.state.currentID, "This is the id");
   }
 
-  handleSubmit(event){
-      axios({
-        mode: "no-cors",
-        method: "post",
-        url: `http://localhost:5000/debtor/${this.state.currentID}/note`,
-        data: {
-            note : this.state.note
-        }
-      })
+  handleModalClose(event) {
+    this.props.handleNoteModalClose();
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    axios({
+      mode: "no-cors",
+      method: "post",
+      url: `http://localhost:5000/debtor/${this.state.currentID}/note`,
+      data: {
+        note: this.state.note,
+      },
+    })
       .then((response) => {
         console.log(response);
+        
       })
       .catch((error) => {
         console.log(error);
       });
-    event.preventDefault();
+    this.handleModalClose();
   }
 
   render() {
@@ -63,23 +69,24 @@ export default class NoteModal extends Component {
         <ReactModal
           style={this.customStyles}
           onRequestClose={() => {
-            this.props.handleModalClose();
+            this.props.handleNoteModalClose();
           }}
           isOpen={this.props.noteModalIsOpen}
         >
           <div className="note">
             <div className="note-header">Note</div>
-            <form onSubmit={(this.handleSubmit)}>
-                <textarea 
+            <form onSubmit={this.handleSubmit}>
+              <textarea
+                id="textInput"
                 className="textareanote"
-                rows='20'
-                cols='40'
+                rows="20"
+                cols="40"
                 type="text"
                 name="note"
                 value={this.state.note}
                 onChange={this.handleChange}
-                />
-                <button >Submit</button>
+              />
+              <button type="submit">Submit</button>
             </form>
           </div>
         </ReactModal>

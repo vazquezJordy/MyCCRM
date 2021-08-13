@@ -216,11 +216,11 @@ export default class DebtorDetail extends Component {
           <div className="activity-wrapper__header">Activity</div>
           <div className="activity-wrapper__add-activity">
             <div className="activity-wrapper__add-activity-note">
-              <button onClick={() => this.setState({showNoteModal: true})}>Add Activity</button>
+              <button onClick={() => this.setState({showNoteModal: true})}>Add Note</button>
               <NoteModal 
               debtorID = {this.state.currentId}
               noteModalIsOpen={this.state.showNoteModal}
-              handleModalClose={() => this.setState({showModal: false})}
+              handleNoteModalClose={() => this.setState({showNoteModal: false})}
               />
             </div>
             
