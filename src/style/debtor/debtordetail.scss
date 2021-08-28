@@ -1,7 +1,7 @@
 .debtor-detail{
     background-color: #0D1B2A;
     color: #E0E1DD;
-    height: 80%;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-evenly;
@@ -50,9 +50,9 @@
     }
 }
 
-.activity-wrapper{
-    margin-top: 5px;
-    height: 175%;
-    background-color: #1B263B;
-    color: #E0E1DD;
-}
+// .activity-wrapper{
+//     margin-top: 5px;
+//     height: 175%;
+//     background-color: #1B263B;
+//     color: #E0E1DD;
+// }

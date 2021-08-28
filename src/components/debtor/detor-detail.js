@@ -4,6 +4,7 @@ import axios from "axios";
 import AddPaymentModal from "../payments/add-payment-modal";
 import DebtorActivity from "./debtor-activity";
 import NoteModal from "./Note/note-modal";
+import PhoneNoteModal from "./phone/phone-note-modal";
 
 export default class DebtorDetail extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class DebtorDetail extends Component {
       currentDebtor: {},
       firstName: "",
       showModal: false,
-      showNoteModal: false, 
+      showNoteModal: false,
       showPhoneNoteModal: false,
     };
     this.getCurrentDebtor = this.getCurrentDebtor.bind(this);
@@ -22,13 +23,13 @@ export default class DebtorDetail extends Component {
     this.handleModalClose = this.handleModalClose.bind(this);
   }
 
-  handleOpenModal = ()=> {
-    this.setState({showModal: true})
-  }
+  handleOpenModal = () => {
+    this.setState({ showModal: true });
+  };
 
-  handleModalClose=()=> {
-    this.setState({showModal: false});
-  } 
+  handleModalClose = () => {
+    this.setState({ showModal: false });
+  };
 
   getCurrentDebtor() {
     axios({
@@ -37,13 +38,11 @@ export default class DebtorDetail extends Component {
       url: `http://localhost:5000/debtor/${this.state.currentId}`,
     })
       .then((response) => {
-        console.log(response);
-        console.log(this.state.currentId);
         this.setState({
           currentDebtor: response.data,
           firstName: response.data.firstName,
         });
-        console.log(this.state.currentDebtor);
+        
       })
       .catch((error) => {
         console.log("Unable to get debtor", error);
@@ -199,34 +198,62 @@ export default class DebtorDetail extends Component {
               </div>
             </div>
           </div>
-          <div className="debtor-detail__payments">
-            <div className="debtor-detail__payments-wrapper">
-              <div className="debtor-detail__payments-header">Payments</div>
-              <button onClick={() => this.handleOpenModal()}> Add Payment</button>
+        </div>
+        <div className="add-activity-wrapper">
+
+          <div className="add-activity-wrapper__header">Activity</div>
+
+          <div className="add-activity-wrapper__add-activity">
+
+            <div className="add-activity-wrapper__add-activity-note">
+            <div className="add-activity-wrapper__add-activity-note__wrapper">
+              <div className="add-activity-wrapper__add-activity-note__wrapper__header">
+                <a>Notes</a>
+              </div>
+              <button className="add-activity-wrapper__add-activity-note__wrapper__button" onClick={() => this.setState({ showNoteModal: true })}>
+                Add Note
+              </button>
+              <NoteModal
+                debtorID={this.state.currentId}
+                noteModalIsOpen={this.state.showNoteModal}
+                handleNoteModalClose={() =>
+                  this.setState({ showNoteModal: false })
+                }
+              />
+              </div>
+            <div className="add-activity-wrapper__add-activity-note-activity">All activity should show here</div>
+              
+            </div>
+            
+
+            <div className="add-activity-wrapper__add-activity-payments">
+              <div className="add-activity-wrapper__add-activity-payments-header">
+                Payments
+              </div>
+              <button onClick={() => this.handleOpenModal()}>
+                Add Payment
+              </button>
               <AddPaymentModal
-                debtorID = {this.state.currentId}
+                debtorID={this.state.currentId}
                 modalIsOpen={this.state.showModal}
                 handleModalClose={this.handleModalClose}
               />
             </div>
-            <div className="debtor-detail__payments-info-wrapper"></div>
-          </div>
-        </div>
-        <div className="activity-wrapper">
-          <div className="activity-wrapper__header">Activity</div>
-          <div className="activity-wrapper__add-activity">
-            <div className="activity-wrapper__add-activity-note">
-              <button onClick={() => this.setState({showNoteModal: true})}>Add Note</button>
-              <NoteModal 
+            <div className="add-activity-wrapper__add-activity-phone">
+              <div className="add-activity-wrapper__add-activity-phone-header">Phone Call Notes</div>
+              <button
+                onClick={() => this.setState({ showPhoneNoteModal: true })}
+              >
+                Add Call Notes
+              </button>
+              <PhoneNoteModal
               debtorID = {this.state.currentId}
-              noteModalIsOpen={this.state.showNoteModal}
-              handleNoteModalClose={() => this.setState({showNoteModal: false})}
+              phoneModalIsOpen = {this.state.showPhoneNoteModal}
+              handlePhoneModalClose = {() => this.setState({showPhoneNoteModal: false})}
               />
             </div>
-            
-            
           </div>
-            <DebtorActivity/>
+          {/* <DebtorActivity /> */}
         </div>
       </div>
     );

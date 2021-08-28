@@ -1,0 +1,52 @@
+.add-activity-wrapper {
+  background-color: #ffff;
+
+  &__add-activity {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 10px;
+    border-top: black 1px solid;
+    text-align: center;
+  }
+  &__add-activity-note__wrapper {
+    height: inherit;
+    border: 0.1rem solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &__header {
+      
+    }
+
+    &__button {
+      background-color: $grey; /* Green */
+      border: none;
+      color: white;
+      padding: 8px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      border: 1px solid $purple;
+      border-radius: 10px;
+
+        &:hover {
+        color: $purple;
+        cursor: pointer;
+        border-left: solid 5px $pink;
+        }
+    }
+
+    &__button button {
+      height: 28px;
+      width: 100px;
+      justify-content: right;
+      font-size: 14px;
+      color: black;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
