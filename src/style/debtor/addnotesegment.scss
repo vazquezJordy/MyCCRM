@@ -1,5 +1,6 @@
 .add-activity-wrapper {
   background-color: #ffff;
+  
 
   &__add-activity {
     display: grid;
@@ -7,12 +8,23 @@
     margin-top: 10px;
     border-top: black 1px solid;
     text-align: center;
+    background-color: #dce0d9;
+    
+    
   }
+
+  &__add-activity-note-activity {
+    
+  }
+
   &__add-activity-note__wrapper {
     height: inherit;
-    border: 0.1rem solid black;
+    border: 2px solid black;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background-color: white;
+
+    
 
     &__header {
       display: flex;
@@ -51,5 +63,8 @@
         outline: none;
       }
     }
+    
   }
+  
 }
+

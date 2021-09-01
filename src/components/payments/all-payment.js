@@ -4,7 +4,7 @@ const AllPayments = (props) => {
     const {id, parent_id, dateDue, paymentAmount} = props.paymentRecords
 
     return(
-        <div key={id}>Due Date:{dateDue} Payment:{paymentAmount}</div>
+        <div className='display-activity' key={id}>Due Date:{dateDue} Payment:{paymentAmount}</div>
     )
 }
 

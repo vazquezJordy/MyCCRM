@@ -96,13 +96,15 @@ export default class DebtorDetail extends Component {
       }))
       .catch((error) => {
         console.log("unable to get note datat", error);
-      });
+      })
+      
   }
 
   componentDidMount() {
     this.getCurrentDebtor();
     this.getNotes();
   }
+ 
 
   render() {
     const {
@@ -305,14 +307,14 @@ export default class DebtorDetail extends Component {
                 modalIsOpen={this.state.showModal}
                 handleModalClose={this.handleModalClose}
               />
-              <div>
-                <div>{allPayments}</div>
+              <div className='add-activity-wrapper__payments-activity'>
+                {allPayments}
               </div>
             </div>
             <div className="add-activity-wrapper__add-activity-phone">
               <div className="add-activity-wrapper__add-activity-phone-header">
                 Phone Call Notes
-              </div>
+              </div> 
               <button
                 onClick={() => this.setState({ showPhoneNoteModal: true })}
               >
@@ -325,8 +327,8 @@ export default class DebtorDetail extends Component {
                   this.setState({ showPhoneNoteModal: false })
                 }
               />
-              <div>
-                <div>{allPhoneRecords}</div>
+              <div className='add-activity-wrapper__phone-note-activity'>
+                {allPhoneRecords}
               </div>
             </div>
           </div>

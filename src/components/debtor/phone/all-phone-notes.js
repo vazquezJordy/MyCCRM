@@ -4,7 +4,7 @@ const AllPhoneNotes = (props) => {
     const {id, parent_id, phoneNote} = props.phoneRecords;
 
     return(
-        <div key={id}>{phoneNote}</div>
+        <div className='display-activity' key={id}>{phoneNote}</div>
     )
 };
 

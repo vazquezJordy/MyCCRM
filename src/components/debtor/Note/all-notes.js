@@ -4,7 +4,7 @@ const AllNotes = (props) => {
     const {id, note, parent_id} = props.noteRecord;
 
     return (
-        <div key={id}>{note}</div>
+        <div className='display-activity' key={id}>{note}</div>
     );
 }
 
