@@ -13,6 +13,36 @@
     
   }
 
+  &__add-activity-payments__wrapper {
+    height: inherit;
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+    }
+  }
+  &__add-activity-phone__wrapper {
+    height: inherit;
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+    }
+
+  }
+
   &__add-activity-note-activity {
     
   }
@@ -50,18 +80,6 @@
         cursor: pointer;
         border-left: solid 5px $pink;
         }
-    }
-
-    &__button button {
-      height: 28px;
-      width: 100px;
-      justify-content: right;
-      font-size: 14px;
-      color: black;
-
-      &:focus {
-        outline: none;
-      }
     }
     
   }

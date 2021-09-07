@@ -77,34 +77,31 @@ export default class DebtorDetail extends Component {
       url: allPhoneNotes,
     });
 
-    axios.all([requestNote, requestPayments, requestPhoneNotes])
+    axios
+      .all([requestNote, requestPayments, requestPhoneNotes])
       .then(
-        
-      axios.spread((...response) => {
-        const note = response[0];
-        const payments = response[1];
-        const phoneNotes = response[2];
-        
-        this.setState({
-          note: this.state.note.concat(note.data),
-          payments: this.state.payments.concat(payments.data),
-          phoneNote: this.state.phoneNote.concat(phoneNotes.data)
+        axios.spread((...response) => {
+          const note = response[0];
+          const payments = response[1];
+          const phoneNotes = response[2];
 
-        
-        });
-        console.log(this.state.phoneNote,this.state.payments)
-      }))
+          this.setState({
+            note: this.state.note.concat(note.data),
+            payments: this.state.payments.concat(payments.data),
+            phoneNote: this.state.phoneNote.concat(phoneNotes.data),
+          });
+          console.log(this.state.phoneNote, this.state.payments);
+        })
+      )
       .catch((error) => {
         console.log("unable to get note datat", error);
-      })
-      
+      });
   }
 
   componentDidMount() {
     this.getCurrentDebtor();
     this.getNotes();
   }
- 
 
   render() {
     const {
@@ -125,19 +122,21 @@ export default class DebtorDetail extends Component {
     } = this.state.currentDebtor;
 
     const noteRecords = this.state.note.map((noteRecord) => {
-      
       return <AllNotes key={noteRecord.id} noteRecord={noteRecord} />;
     });
 
     const allPhoneRecords = this.state.phoneNote.map((phoneRecords) => {
-      
-      return <AllPhoneNotes key={phoneRecords.id} phoneRecords={phoneRecords} />;
+      return (
+        <AllPhoneNotes key={phoneRecords.id} phoneRecords={phoneRecords} />
+      );
     });
 
     const allPayments = this.state.payments.map((paymentRecords) => {
       console.log(paymentRecords.paymentAmount);
-      return <AllPayments key={paymentRecords.id} paymentRecords={paymentRecords} />
-    })
+      return (
+        <AllPayments key={paymentRecords.id} paymentRecords={paymentRecords} />
+      );
+    });
 
     return (
       <div className="debtor-wrapper">
@@ -296,38 +295,47 @@ export default class DebtorDetail extends Component {
             </div>
 
             <div className="add-activity-wrapper__add-activity-payments">
-              <div className="add-activity-wrapper__add-activity-payments-header">
-                Payments
+              <div className="add-activity-wrapper__add-activity-payments__wrapper">
+                <div className="add-activity-wrapper__add-activity-note__wrapper__header">
+                  Payments
+                </div>
+
+                <button
+                  onClick={() => this.handleOpenModal()}
+                  className="add-activity-wrapper__add-activity-note__wrapper__button"
+                >
+                  Add Payment
+                </button>
+                <AddPaymentModal
+                  debtorID={this.state.currentId}
+                  modalIsOpen={this.state.showModal}
+                  handleModalClose={this.handleModalClose}
+                />
               </div>
-              <button onClick={() => this.handleOpenModal()}>
-                Add Payment
-              </button>
-              <AddPaymentModal
-                debtorID={this.state.currentId}
-                modalIsOpen={this.state.showModal}
-                handleModalClose={this.handleModalClose}
-              />
-              <div className='add-activity-wrapper__payments-activity'>
+              <div className="add-activity-wrapper__payments-activity">
                 {allPayments}
               </div>
             </div>
             <div className="add-activity-wrapper__add-activity-phone">
-              <div className="add-activity-wrapper__add-activity-phone-header">
-                Phone Call Notes
-              </div> 
-              <button
-                onClick={() => this.setState({ showPhoneNoteModal: true })}
-              >
-                Add Call Notes
-              </button>
-              <PhoneNoteModal
-                debtorID={this.state.currentId}
-                phoneModalIsOpen={this.state.showPhoneNoteModal}
-                handlePhoneModalClose={() =>
-                  this.setState({ showPhoneNoteModal: false })
-                }
-              />
-              <div className='add-activity-wrapper__phone-note-activity'>
+              <div className="add-activity-wrapper__add-activity-phone__wrapper">
+                <div className="add-activity-wrapper__add-activity-phone__wrapper__header">
+                  Phone Call Notes
+                </div>
+                <button
+                  onClick={() => this.setState({ showPhoneNoteModal: true })}
+                  className="add-activity-wrapper__add-activity-note__wrapper__button"
+                >
+                  Add Call Notes
+                </button>
+                <PhoneNoteModal
+                  debtorID={this.state.currentId}
+                  phoneModalIsOpen={this.state.showPhoneNoteModal}
+                  handlePhoneModalClose={() =>
+                    this.setState({ showPhoneNoteModal: false })
+                  }
+                />
+              </div>
+              <div className="add-activity-wrapper__phone-note-activity">
                 {allPhoneRecords}
               </div>
             </div>
