@@ -9,6 +9,7 @@ body {
     background-color: #1A1A1A;
  }
 
+@import "./login/login.scss"; 
 @import "./variables.scss";
 @import "./navigation.scss";
 @import "./dashboard.scss";

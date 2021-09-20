@@ -6,8 +6,10 @@ import Dashboard from "./Dashboard/dashboard"
 import Deptor from "./debtor/debtor";
 import Payments from "./payments/payments";
 import DebtorDetail from "./debtor/detor-detail";
+import Login from "./Login/login";
 
 export default class App extends Component {
+  
   render() {
     return (
       <div className="app">
@@ -17,6 +19,7 @@ export default class App extends Component {
           <Switch>
 
             <Route exact path = "/" component={Dashboard} />
+            <Route exact path = "/login" component={Login}/>
             <Route exact path = "/debtor" component={Deptor} />
             <Route exact path = "/payment" component={Payments} />
             <Route
