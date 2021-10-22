@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import ReactModal from "react-modal";
 import AddDebtorModal from "../debtor/add-deptor-modal";
+import Cookies from "js-cookie";
 
 export default class NavigationContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       showModal: false
@@ -13,6 +14,7 @@ export default class NavigationContainer extends Component {
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
+    // this.handleSignOut = this.handleSignOut.bind(this);
   }
 
    handleOpenModal = ()=> {
@@ -23,8 +25,16 @@ export default class NavigationContainer extends Component {
     this.setState({showModal: false});
   } 
 
+  handleSignOut=()=>{
+    // let history = useHistory();
+    // history.push("/auth")
+    this.props.history.push("/auth")
+    // Cookies.remove("token")
+  }
+
   render() {
     return (
+     
       <div className="nav-wrapper">
         <div className="left-side">
           <div className="nav-link-wrapper">
@@ -55,8 +65,11 @@ export default class NavigationContainer extends Component {
           />
         </div>
           <button className="user-button">Jordy Vazquez</button>
+
+          <button onClick={this.handleSignOut.bind(this)} className="user-button">Signout</button>
         </div>
       </div>
+       
     );
   }
 }

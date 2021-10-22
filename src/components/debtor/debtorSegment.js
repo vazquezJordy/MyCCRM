@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import DebtorCard from "./debtor-card";
+import { Redirect, Route } from "react-router";
+import Login from "../Login/login";
 
 export default class DebtorSegment extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       debtor: [],
@@ -31,18 +33,15 @@ export default class DebtorSegment extends Component {
   }
 
   componentWillMount() {
-    this.getDebtors();
+      this.getDebtors();
+    
   }
 
 
   render() {
     const debtorRecords = this.state.debtor.map(debtorRecord => {
-      if (this.props.loggedInStatus === "LOGGED_IN") {
-      console.log(debtorRecord.id)
+      
       return <DebtorCard key={debtorRecord.id} debtorRecord={debtorRecord}/>
-      } else {
-        return (<div>You need to sign in</div>)
-      }
     });
 
     return (

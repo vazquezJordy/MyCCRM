@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +14,16 @@ export default class Login extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    
   }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  }
+
+ 
 
   handleSubmit(event) {
     axios(
@@ -32,32 +41,27 @@ export default class Login extends Component {
         console.log("this came from the backend ", response.data.access_token);
         Cookies.set("token", response.data.access_token);
         const token = Cookies.get("token")
-        console.log("thIS IS YOUR CONST TOKEN" + token)
-        if (response.data.access_token === token) {
+        if (response.status == 200) {
           this.props.handleSuccessfulAuth();
           console.log("I was triggered because test was true")
         } else {
           this.setState({
             errorText: "Wrong email or password",
           });
-          this.props.handleUnsuccessfulAuth();
+          
         }
       })
       .catch((error) => {
         this.setState({
           errorText: "An error occurred",
         });
-        this.props.handleUnsuccessfulAuth();
+        
       });
 
     event.preventDefault();
   }
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  }
+ 
 
   render() {
     const token = Cookies.get("token");

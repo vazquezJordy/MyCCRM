@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Collected from './collected';
+import Collected from './home';
 import RecentContacts from './recents';
 
 class Dashboard extends Component {

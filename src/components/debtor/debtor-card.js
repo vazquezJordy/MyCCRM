@@ -19,11 +19,4 @@ const DebtorCard = (props) => {
 };
 
 export default DebtorCard;
-// const debtorRecords = this.state.debtor.map((debtorRecord) => {
-//   return (
 
-//     <div className="debtor-segment_card" key={debtorRecord.id}>
-//       <DebtorCard debtorRecord={debtorRecord}/>
-//       </div>
-//   );
-// });

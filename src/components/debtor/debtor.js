@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import DebtorSegment from "./debtorSegment";
 
 class Deptor extends Component {
@@ -10,19 +11,13 @@ class Deptor extends Component {
     }
   }
 
-  //   handleSuccessfulAuth(data) {
-  //     this.props.handleLogin(data);
-  //     this.props.history.push("/debtor");
-  //   }
-  //   handleLogoutClick() {}
-
   render() {
     console.log("This comes from Debtor" + this.props.loggedInStatus);
     return (
-      <div className="debtor-wrapper">
+      (this.props.loggedInStatus === "LOGGED_IN" ?     <div className="debtor-wrapper">
         <DebtorSegment  loggedInStatus={this.props.loggedInStatus}/>
-      </div>
-    );
+      </div> : <Redirect to='/auth'/>)
+    )
   }
 }
 

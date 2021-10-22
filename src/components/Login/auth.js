@@ -1,30 +1,33 @@
-import React, { Component } from 'react';
-import Login from './login';
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import Login from "./login";
 
 export default class Auth extends Component {
-    constructor(props) {
-        super(props);
-    
-        this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
-        this.handleUnsuccessfulAuth = this.handleUnsuccessfulAuth.bind(this);
-      }
+  constructor(props) {
+    super(props);
 
-      handleSuccessfulAuth() {
-        this.props.handleSuccessfulLogin();
-        this.props.history.push("/");
-      }
-    
-      handleUnsuccessfulAuth() {
-        this.props.handleUnsuccessfulLogin();
-      }
+    this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+    this.handleUnsuccessfulAuth = this.handleUnsuccessfulAuth.bind(this);
+  }
 
-    render() {
-        return (
-            <div>
-                <Login
-                handleSuccessfulAuth={this.handleSuccessfulAuth}
-                handleUnsuccessfulAuth={this.handleUnsuccessfulAuth} />
-            </div>
-        );
-    }
+  handleSuccessfulAuth() {
+    this.props.handleSuccessfulLogin();
+    this.props.history.push("/debtor");
+  }
+
+  handleUnsuccessfulAuth() {
+    this.props.handleUnsuccessfulLogin();
+  }
+
+  render() {
+    return (
+      (this.props.loggedInStatus === "NOT_LOGGED_IN" ? 
+      <div>
+        <Login
+          handleSuccessfulAuth={this.handleSuccessfulAuth}
+          handleUnsuccessfulAuth={this.handleUnsuccessfulAuth}
+        />
+      </div>
+    : <Redirect to='debtor' />))
+  }
 }
