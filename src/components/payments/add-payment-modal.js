@@ -49,8 +49,8 @@ export default class AddPaymentModal extends Component {
       data: {
         paymentAmount: this.state.paymentAmount,
         dateDue: this.state.dateDue,
-      },
-    })
+      } 
+    },{withCredentials})
       .then((response) => {
         console.log(response);
       })

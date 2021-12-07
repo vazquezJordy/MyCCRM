@@ -1,3 +1,50 @@
 .login {
-    background-color: white;
+    // width: 70vw;
+    // height: 75vh;
+    // align-items: center;
+    // justify-content: center;
+    // margin: auto;
+   
+    // margin-top: 75px;
+    margin: 2em 0;
+    padding: 1em 2em;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    background-color: lightgray;
+    
+    
+
+    .form{
+        background-color: lightgray;
+        // align-items: center;
+        // justify-content: space-between;
+        // text-align: center;
+        // margin-top: 1250px;
+        // width: 85vh;
+        // height: 55vh;
+        // margin: auto;
+        // padding: 20px
+        padding: 0 .23em;
+        font-size: 1.25em;
+        display: flex;
+   
+        justify-content: space-between
+        ;label{
+            justify-content: space-between
+        }
+        
+        ;input {
+            padding: .5em;
+            border: solid 1px #999;
+        }
+        ;input[type="text"]{
+            width: 20em;
+        }
+        ;texarea {
+            min-height: 8em;
+            min-width: 100%;
+            padding: .5em;
+            border: solid 1px #999;
+        }
+    }
 }

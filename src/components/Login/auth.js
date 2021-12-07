@@ -11,8 +11,8 @@ export default class Auth extends Component {
   }
 
   handleSuccessfulAuth() {
-    this.props.handleSuccessfulLogin();
-    this.props.history.push("/debtor");
+    this.props.handleSuccessfulLogin()
+    this.props.history.push("/")
   }
 
   handleUnsuccessfulAuth() {
@@ -22,12 +22,12 @@ export default class Auth extends Component {
   render() {
     return (
       (this.props.loggedInStatus === "NOT_LOGGED_IN" ? 
-      <div>
+      <div className='auth-login'>
         <Login
           handleSuccessfulAuth={this.handleSuccessfulAuth}
           handleUnsuccessfulAuth={this.handleUnsuccessfulAuth}
         />
       </div>
-    : <Redirect to='debtor' />))
+    : <Redirect to='/' />))
   }
 }

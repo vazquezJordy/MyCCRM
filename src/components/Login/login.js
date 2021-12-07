@@ -14,13 +14,17 @@ export default class Login extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    
+    this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
     });
+  }
+
+  handleSuccessfulAuth() {
+    this.props.handleSuccessfulAuth()
   }
 
  
@@ -42,7 +46,7 @@ export default class Login extends Component {
         Cookies.set("token", response.data.access_token);
         const token = Cookies.get("token")
         if (response.status == 200) {
-          this.props.handleSuccessfulAuth();
+          this.props.handleSuccessfulAuth()
           console.log("I was triggered because test was true")
         } else {
           this.setState({
@@ -67,10 +71,13 @@ export default class Login extends Component {
     const token = Cookies.get("token");
     return (
       <div className="login">
-        
-          <form>
+        <div className="header">
+        <h1>Login</h1>
+        </div>
+         
+          <form className='form'>
             <label className="labels">
-              email
+              Email
               <input
                 className="inputField"
                 type="text"
@@ -82,6 +89,7 @@ export default class Login extends Component {
 
             <label className="labels">
               Password
+               
               <input
                 className="inputField"
                 type="text"

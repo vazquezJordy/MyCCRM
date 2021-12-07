@@ -21,6 +21,7 @@ export default class AddDebtorForm extends Component {
       amountOwed: "",
       interest: "",
       eligibleForReporting: Boolean,
+      status: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -47,6 +48,7 @@ export default class AddDebtorForm extends Component {
         amountOwed: this.state.amountOwed,
         interest: this.state.interest,
         eligibleForReporting: this.state.eligibleForReporting,
+        status: this.state.status,
       },
     })
       .then((response) => {
@@ -215,6 +217,26 @@ export default class AddDebtorForm extends Component {
                 onChange={this.handleChange}
               />
             </label>
+
+            <label className="labels" id="status">
+              Status:
+              <select
+                id="status"
+                name="status"
+                value={this.state.status}
+                onChange={this.handleChange}
+              >
+                <option value={null}></option>
+                <option value="No Contact">No Contact</option>
+                <option value="1st Contact">1st Contact</option>
+                <option value="2nd Contact">2nd Contact</option>
+                <option value="3rd Contact">3rd Contact</option>
+                <option value="Do not call">Do not call</option>tyy
+                <option value="Pre-Legal">Pre-Legal</option>
+                <option value="Legal">Legal</option>
+              </select>
+            </label>
+
             {/* <label className="labels" for="reported">
               Eligible for credit reporting:
             </label>

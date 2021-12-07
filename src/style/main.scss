@@ -1,16 +1,6 @@
-body {
-    margin: 0px;
-    font-family: 'Titillium Web', sans-serif;
-    background-color: #1A1A1A;
- }
- .app {
-    display: grid;
-    grid-template-columns: 1fr;
-    background-color: #1A1A1A;
- }
 
-@import "./login/login.scss"; 
 @import "./variables.scss";
+@import "./login/login.scss"; 
 @import "./navigation.scss";
 @import "./dashboard.scss";
 @import "./addDebtor/addDebtor.scss";
@@ -19,3 +9,13 @@ body {
 @import "./debtor/addnotesegment.scss";
 @import "./debtor/display-activity.scss";
 
+body {
+   margin: 0px;
+   font-family: 'Titillium Web', sans-serif;
+   background-color: lightgray;
+}
+.app {
+   display: grid;
+   grid-template-columns: 1fr;
+   background-color: $cultured;
+}

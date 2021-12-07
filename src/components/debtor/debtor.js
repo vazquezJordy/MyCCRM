@@ -12,13 +12,13 @@ class Deptor extends Component {
   }
 
   render() {
-    console.log("This comes from Debtor" + this.props.loggedInStatus);
+    
     return (
-      (this.props.loggedInStatus === "LOGGED_IN" ?     <div className="debtor-wrapper">
-        <DebtorSegment  loggedInStatus={this.props.loggedInStatus}/>
-      </div> : <Redirect to='/auth'/>)
-    )
-  }
+        <div className='debtor-wrapper'> 
+        <DebtorSegment/>
+        </div>
+    );
+}
 }
 
 export default Deptor;

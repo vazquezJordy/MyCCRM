@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import AddPaymentModal from "../payments/add-payment-modal";
+import EditStatusModal from "./editing/editStatus"
 import DebtorActivity from "./debtor-activity";
 import NoteModal from "./Note/note-modal";
 import PhoneNoteModal from "./phone/phone-note-modal";
 import AllNotes from "./Note/all-notes";
 import AllPhoneNotes from "./phone/all-phone-notes";
 import AllPayments from "../payments/all-payment";
+
 
 export default class DebtorDetail extends Component {
   constructor(props) {
@@ -20,6 +22,7 @@ export default class DebtorDetail extends Component {
       showModal: false,
       showNoteModal: false,
       showPhoneNoteModal: false,
+      showEditStatusModal: false,
       note: [],
       payments: [],
       phoneNote: [],
@@ -119,6 +122,7 @@ export default class DebtorDetail extends Component {
       spouseEmployerPhoneNumber,
       spousePhoneNumber,
       ssn,
+      status,
     } = this.state.currentDebtor;
 
     const noteRecords = this.state.note.map((noteRecord) => {
@@ -257,11 +261,34 @@ export default class DebtorDetail extends Component {
             </div>
             <div className="debtor-detail__related-contact-info__row-one">
               <div className="debtor-detail__related-contact-info__row-one-left">
-                <tr>spouse</tr>
+                <tr>Spouse</tr>
               </div>
 
               <div className="debtor-detail__related-contact-info__row-one-right">
                 <tr>{spouse}</tr>
+              </div>
+            </div>
+            <div className="debtor-detail__related-contact-info__row-one">
+              <div className="debtor-detail__related-contact-info__row-one-left">
+                <tr>Status</tr>
+              </div>
+
+              <div className="debtor-detail__related-contact-info__row-one-right">
+                <tr>{status}</tr> 
+                <button
+                  onClick={() => this.setState({ showEditStatusModal: true })}
+                  className="add-activity-wrapper__add-activity-note__wrapper__button"
+                >
+                  Edit Status
+                </button>
+                <EditStatusModal
+                  debtorID={this.state.currentId}
+                  editModalIsOpen={this.state.showEditStatusModal}
+                  handleEditStatusModalClose={() =>
+                    this.setState({ showEditStatusModal: false })
+                  }
+                />
+                
               </div>
             </div>
           </div>
