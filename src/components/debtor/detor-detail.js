@@ -44,7 +44,7 @@ export default class DebtorDetail extends Component {
     axios({
       mode: "no-cors",
       method: "get",
-      url: `http://localhost:5000/debtor/${this.state.currentId}`,
+      url: `https://mycrmdbpython.herokuapp.com/debtor/${this.state.currentId}`,
     })
       .then((response) => {
         this.setState({
@@ -58,9 +58,9 @@ export default class DebtorDetail extends Component {
   }
 
   getNotes() {
-    let allNotes = `http://localhost:5000/debtor/${this.state.currentId}/allnotes`;
-    let allPayments = `http://localhost:5000/debtor/${this.state.currentId}/allpayments`;
-    let allPhoneNotes = `http://localhost:5000/debtor/${this.state.currentId}/allphonenotes`;
+    let allNotes = `https://mycrmdbpython.herokuapp.com/debtor/${this.state.currentId}/allnotes`;
+    let allPayments = `https://mycrmdbpython.herokuapp.com/debtor/${this.state.currentId}/allpayments`;
+    let allPhoneNotes = `https://mycrmdbpython.herokuapp.com/debtor/${this.state.currentId}/allphonenotes`;
 
     const requestNote = axios({
       mode: "no-cors",
@@ -93,7 +93,6 @@ export default class DebtorDetail extends Component {
             payments: this.state.payments.concat(payments.data),
             phoneNote: this.state.phoneNote.concat(phoneNotes.data),
           });
-          console.log(this.state.phoneNote, this.state.payments);
         })
       )
       .catch((error) => {

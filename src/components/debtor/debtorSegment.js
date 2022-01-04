@@ -19,7 +19,7 @@ export default class DebtorSegment extends Component {
     axios({
       mode: "no-cors",
       method: "get",
-      url: "http://localhost:5000/debtors",
+      url: "https://mycrmdbpython.herokuapp.com/debtors",
     })
       .then((response) => {
         this.setState({

@@ -46,7 +46,7 @@ export default class NoteModal extends Component {
     axios({
       mode: "no-cors",
       method: "post",
-      url: `http://localhost:5000/debtor/${this.state.currentID}/note`,
+      url: `https://mycrmdbpython.herokuapp.com/debtor/${this.state.currentID}/note`,
       data: {
         note: this.state.note,
       },

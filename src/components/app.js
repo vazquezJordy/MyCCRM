@@ -46,7 +46,7 @@ export default class App extends Component {
     const token = Cookies.get("token");
     axios
       .get(
-        "http://localhost:5000/protected",
+        "https://mycrmdbpython.herokuapp.com/protected",
         {
           headers: {
             Authorization: `Bearer ${token}`,

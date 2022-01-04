@@ -46,7 +46,7 @@ export default class PhoneNoteModal extends Component {
     axios({
       mode: "no-cors",
       method: "post",
-      url: `http://localhost:5000/debtor/${this.state.currentID}/phone`,
+      url: `https://mycrmdbpython.herokuapp.com/debtor/${this.state.currentID}/phone`,
       data: {
         phoneNote: this.state.phoneNote
       }

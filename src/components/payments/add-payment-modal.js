@@ -45,7 +45,7 @@ export default class AddPaymentModal extends Component {
     axios({
       mode: "no-cors",
       method: "post",
-      url: `http://localhost:5000/debtor/${this.state.currentID}/payments`,
+      url: `https://mycrmdbpython.herokuapp.com/debtor/${this.state.currentID}/payments`,
       data: {
         paymentAmount: this.state.paymentAmount,
         dateDue: this.state.dateDue,

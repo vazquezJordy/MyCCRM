@@ -27,55 +27,52 @@ export default class EditStatusModal extends Component {
       },
     };
     this.handleChange = this.handleChange.bind(this);
-    this.getCurrentStatus = this.getCurrentStatus.bind(this);
+    this.changeStatus = this.changeStatus.bind(this);
     // this.handleModalClose = this.handleModalClose.bind(this);
   }
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value,
+      status: event.target.value
     });
   }
 
-  // handleModalClose(event) {
-  //   this.props.handleNoteModalClose();
-  // }
+  handleModalClose(event) {
+    this.props.handleEditStatusModalClose();
+  }
 
-  getCurrentStatus() {
-    // event.preventDefault();
+  changeStatus(event) {
     axios({
       mode: "no-cors",
-      method: "get",
-      url: `http://localhost:5000/debtor/1`,
+      method: "put",
+      url: `https://mycrmdbpython.herokuapp.com/debtor/${this.state.currentID}/updatestatus`,
+      data: {
+        status: this.state.status,
+      },
+    }).then((response) => {
+      console.log(response);
     })
-      .then((response) => {
-        this.setState({
-          status: response.data.status
-        }),console.log(response.data);
-        
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    .catch((error) => {
+      console.log(error);
+    });
+    this.handleModalClose()
   }
 
-  componentDidMount() {
-    this.getCurrentStatus();
-    console.log(this.state.status)
-  }
+
 
   render() {
+    var status = this.state.status
     return (
       <div className="note-modal">
         <ReactModal
           style={this.customStyles}
           onRequestClose={() => {
-            this.props.handleNoteModalClose();
+            this.props.handleEditStatusModalClose();
           }}
           isOpen={this.props.editModalIsOpen}
         >
-          <div className="editStatus">
-          <label className="labels" id="status">
+          <div className="editStatus" >
+          <label className="labels" id="status" >
               Status:
               <select
                 id="status"
@@ -83,7 +80,7 @@ export default class EditStatusModal extends Component {
                 value={this.state.status}
                 onChange={this.handleChange}
               >
-                <option value={null}></option>
+                
                 <option value="No Contact">No Contact</option>
                 <option value="1st Contact">1st Contact</option>
                 <option value="2nd Contact">2nd Contact</option>
@@ -92,7 +89,9 @@ export default class EditStatusModal extends Component {
                 <option value="Pre-Legal">Pre-Legal</option>
                 <option value="Legal">Legal</option>
               </select>
+              <button className="btn" onClick={this.changeStatus}>Submit</button>
             </label>
+            
           </div>
         </ReactModal>
       </div>
